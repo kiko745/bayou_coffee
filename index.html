@@ -75,7 +75,7 @@
       transition: width 0.3s ease;
     }
 
-  .carousel {
+    .carousel {
       perspective: 1200px;
       width: 350px;
       height: 500px;
@@ -122,20 +122,46 @@
       font-style: normal;
       font-size: 1.1rem;
     }
-.role {
-  color: #3bc7b8;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  cursor: default;
-}
-.location {
-  font-size: 0.75rem;
-  font-style: italic;
-  opacity: 0.8;
-  cursor: default;
-}
-</style>
+    .role {
+      color: #3bc7b8;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      cursor: default;
+    }
+    .location {
+      font-size: 0.75rem;
+      font-style: italic;
+      opacity: 0.8;
+      cursor: default;
+    }
+
+    /* Responsive text size for small screens */
+    @media (max-width: 640px) {
+      /* Reduce heading size in hero */
+      #home h2 {
+        font-size: 2.5rem; /* smaller than 5xl on desktop */
+      }
+
+      #home p {
+        font-size: 1rem; /* smaller paragraph text */
+      }
+
+      /* Also reduce padding inside the hero's text container */
+      #home > div {
+        padding: 1.5rem;
+      }
+
+      /* Optional: reduce button size */
+      #home a {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 
 <body class="font-sans italic">
@@ -189,28 +215,27 @@
   </section>
 
   <!-- Review Section -->
-<section id="review" class="py-20 px-6 bg-[#fcedb3]">
-  <h2 class="text-3xl font-bold mb-10 text-center text-[#0a4f43]">Customer Feedback</h2>
+  <section id="review" class="py-20 px-6 bg-[#fcedb3]">
+    <h2 class="text-3xl font-bold mb-10 text-center text-[#0a4f43]">Customer Feedback</h2>
 
-  <div class="relative flex justify-center items-center">
-    <!-- Left Arrow -->
-    <button id="prevBtn" class="absolute left-0 text-3xl text-[#0a4f43] hover:scale-125 transition-transform px-4 z-10">
-      &laquo;
-    </button>
+    <div class="relative flex justify-center items-center">
+      <!-- Left Arrow -->
+      <button id="prevBtn" class="absolute left-0 text-3xl text-[#0a4f43] hover:scale-125 transition-transform px-4 z-10">
+        &laquo;
+      </button>
 
-    <div class="carousel" id="carousel">
-      <div class="carousel-track" id="carousel-track">
-        <!-- Cards inserted by JS -->
+      <div class="carousel" id="carousel">
+        <div class="carousel-track" id="carousel-track">
+          <!-- Cards inserted by JS -->
+        </div>
       </div>
-    </div>
 
       <!-- Right Arrow -->
-    <button id="nextBtn" class="absolute right-0 text-3xl text-[#0a4f43] hover:scale-125 transition-transform px-4 z-10">
-      &raquo;
-    </button>
-  </div>
-</section>
-
+      <button id="nextBtn" class="absolute right-0 text-3xl text-[#0a4f43] hover:scale-125 transition-transform px-4 z-10">
+        &raquo;
+      </button>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-[#6d4c41] py-6 text-center text-sm text-[#fddbb0]">
@@ -341,8 +366,6 @@
     updateCards();
     startAutoScroll();
   </script>
-
-
 
 </body>
 </html>
