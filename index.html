@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bayou's Coffee</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
   <style>
-    /* Loading screen styles */
+    header {
+      background-color: #ffffff;
+      color: #3e2723;
+    }
+    body {
+      background-color: #f4e5d3;
+      color: #252222;
+      transition: background-color 0.5s, color 0.5s;
+      font-style: italic;
+    }
+
+    /* Loading screen */
     #loading-screen {
       position: fixed;
       z-index: 1000;
@@ -22,30 +34,23 @@
       font-family: 'Segoe UI', sans-serif;
       padding: 0 1rem;
       text-align: center;
+      font-style: normal;
     }
-
     #coffee-cup {
       font-size: 6rem;
       animation: bounce 1.2s ease-in-out infinite;
       margin-bottom: 1rem;
     }
-
     @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-40px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-40px); }
     }
-
     #loading-text {
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
       min-height: 2rem;
     }
-
     #welcome-text {
       font-size: 1.15rem;
       font-weight: 600;
@@ -53,7 +58,6 @@
       max-width: 400px;
       line-height: 1.4;
     }
-
     #progress-container {
       width: 300px;
       height: 15px;
@@ -63,7 +67,6 @@
       box-shadow: inset 0 0 5px #a37d3c;
       margin-bottom: 2rem;
     }
-
     #progress-bar {
       height: 100%;
       width: 0%;
@@ -71,14 +74,76 @@
       border-radius: 10px 0 0 10px;
       transition: width 0.3s ease;
     }
-  </style>
+
+  .carousel {
+      perspective: 1200px;
+      width: 350px;
+      height: 500px;
+      overflow: hidden;
+    }
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 1s ease;
+    }
+    .card {
+      position: absolute;
+      width: 300px;
+      height: 450px;
+      background-color: #0a4f43;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      color: #fcedb3;
+      box-shadow: 0 8px 16px rgba(10, 79, 67, 0.4);
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      cursor: default;
+      user-select: none;
+      opacity: 0.3;
+      transform: scale(0.8);
+      transition: all 0.4s ease;
+    }
+    .card.active {
+      opacity: 1;
+      transform: scale(1) translateZ(0);
+      z-index: 10;
+    }
+    .stars {
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .reviewer-name {
+      font-weight: 700;
+      margin-top: 1rem;
+      font-style: normal;
+      font-size: 1.1rem;
+    }
+.role {
+  color: #3bc7b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  cursor: default;
+}
+.location {
+  font-size: 0.75rem;
+  font-style: italic;
+  opacity: 0.8;
+  cursor: default;
+}
+</style>
 </head>
-<body class="bg-[#f4e5d3] text-[#3e2723] font-sans">
+
+<body class="font-sans italic">
 
   <!-- Loading Screen -->
   <div id="loading-screen">
     <div id="coffee-cup">☕</div>
-
+    <div id="loading-text">Loading...</div>
     <div id="welcome-text">
       <strong>Welcome to Bayou’s Coffee!</strong><br />
       Come in today for a magical iced coffee from Bayou’s Coffee ☕
@@ -89,19 +154,21 @@
   </div>
 
   <!-- Header -->
-  <header class="bg-[#6d4c41] text-[#fddbb0] shadow-md fixed w-full z-50">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <h1 class="text-2xl font-bold">Bayou's Coffee</h1>
-      <nav class="space-x-6 hidden md:flex">
-        <a href="#about" class="hover:text-yellow-300">About</a>
-        <a href="#events" class="hover:text-yellow-300">Events</a>
-        <a href="#contact" class="hover:text-yellow-300">Contact</a>
-      </nav>
+  <header class="fixed w-full z-50 px-6 py-4 flex items-center justify-between shadow">
+    <div class="flex items-center space-x-3">
+      <img src="logo.jpg" alt="Bayou's Logo" class="h-10 w-auto" />
+      <h1 class="text-xl font-bold">Bayou's Coffee</h1>
     </div>
+    <nav class="flex space-x-6 text-[#3e2723]">
+      <a href="#home" class="hover:text-yellow-300">Home</a>
+      <a href="#reservation" class="hover:text-yellow-300">Reservation</a>
+      <a href="#menu" class="hover:text-yellow-300">Menu</a>
+      <a href="#review" class="hover:text-yellow-300">Review</a>
+    </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+  <section id="home" class="h-screen flex items-center justify-center bg-cover bg-center pt-24" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
     <div class="text-center bg-[#3e2723]/70 text-[#fddbb0] p-10 rounded-lg max-w-xl">
       <h2 class="text-5xl font-extrabold mb-4">Welcome to Bayou's Coffee</h2>
       <p class="text-lg mb-6">Where every sip feels like home.</p>
@@ -109,54 +176,48 @@
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-20 px-6 bg-[#f4e5d3]">
-    <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-4">About Us</h3>
-      <p class="text-[#4e342e]">Bayou's Coffee is your cozy corner café where passion meets flavor. From artisan brews to unforgettable events, we serve up more than coffee — we serve moments.</p>
-    </div>
+  <!-- Reservation Section -->
+  <section id="reservation" class="py-20 px-6">
+    <h2 class="text-3xl font-bold mb-4 text-center">Reservation</h2>
+    <!-- Reservation form content here -->
   </section>
 
-  <!-- Events Section -->
-  <section id="events" class="py-20 px-6 bg-[#efebe9]">
-    <div class="max-w-5xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6">Upcoming Events</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-[#d7ccc8] p-6 rounded-lg shadow hover:shadow-xl transition">
-          <h4 class="text-xl font-semibold mb-2">Open Mic Night</h4>
-          <p class="text-[#4e342e]">Every Friday 7 PM – Bring your voice or an instrument!</p>
-        </div>
-        <div class="bg-[#d7ccc8] p-6 rounded-lg shadow hover:shadow-xl transition">
-          <h4 class="text-xl font-semibold mb-2">Latte Art Workshop</h4>
-          <p class="text-[#4e342e]">Learn to pour with the pros. Saturdays 3 PM.</p>
-        </div>
-        <div class="bg-[#d7ccc8] p-6 rounded-lg shadow hover:shadow-xl transition">
-          <h4 class="text-xl font-semibold mb-2">Board Game Sunday</h4>
-          <p class="text-[#4e342e]">All-day fun with classics and new releases.</p>
-        </div>
+  <!-- Menu Section -->
+  <section id="menu" class="py-20 px-6 bg-[#efebe9]">
+    <h2 class="text-3xl font-bold mb-4 text-center">Our Menu</h2>
+    <!-- Menu items here -->
+  </section>
+
+  <!-- Review Section -->
+<section id="review" class="py-20 px-6 bg-[#fcedb3]">
+  <h2 class="text-3xl font-bold mb-10 text-center text-[#0a4f43]">Customer Feedback</h2>
+
+  <div class="relative flex justify-center items-center">
+    <!-- Left Arrow -->
+    <button id="prevBtn" class="absolute left-0 text-3xl text-[#0a4f43] hover:scale-125 transition-transform px-4 z-10">
+      &laquo;
+    </button>
+
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carousel-track">
+        <!-- Cards inserted by JS -->
       </div>
     </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-20 px-6 bg-[#f4e5d3]">
-    <div class="max-w-3xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-4">Contact Us</h3>
-      <p class="mb-6 text-[#4e342e]">Questions, feedback, or a good joke? We'd love to hear from you.</p>
-      <form class="space-y-4">
-        <input type="text" placeholder="Your Name" class="w-full p-3 rounded bg-[#efebe9] text-[#3e2723]" />
-        <input type="email" placeholder="Your Email" class="w-full p-3 rounded bg-[#efebe9] text-[#3e2723]" />
-        <textarea placeholder="Your Message" class="w-full p-3 rounded bg-[#efebe9] text-[#3e2723] h-32"></textarea>
-        <button class="bg-yellow-300 text-[#3e2723] px-6 py-2 rounded hover:bg-yellow-400 font-semibold">Send</button>
-      </form>
-    </div>
-  </section>
+      <!-- Right Arrow -->
+    <button id="nextBtn" class="absolute right-0 text-3xl text-[#0a4f43] hover:scale-125 transition-transform px-4 z-10">
+      &raquo;
+    </button>
+  </div>
+</section>
+
 
   <!-- Footer -->
   <footer class="bg-[#6d4c41] py-6 text-center text-sm text-[#fddbb0]">
     &copy; 2025 Bayou's Coffee. All rights reserved.
   </footer>
 
+  <!-- Scripts -->
   <script>
     const loadingMessages = [
       "Grinding beans...",
@@ -169,16 +230,13 @@
     const loadingText = document.getElementById('loading-text');
     const progressBar = document.getElementById('progress-bar');
     const loadingScreen = document.getElementById('loading-screen');
-
     let msgIndex = 0;
 
-    // Change message every 1 second
     setInterval(() => {
       msgIndex = (msgIndex + 1) % loadingMessages.length;
       loadingText.textContent = loadingMessages[msgIndex];
     }, 1000);
 
-    // Increment loading bar
     const interval = setInterval(() => {
       load++;
       progressBar.style.width = load + '%';
@@ -187,10 +245,104 @@
         clearInterval(interval);
         loadingScreen.style.transition = 'opacity 1.3s ease';
         loadingScreen.style.opacity = 0;
-        setTimeout(() => loadingScreen.style.display = 'none', 1200);
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+          document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+        }, 1200);
       }
-    }, 50); // ~5 seconds total
+    }, 10);
   </script>
+
+  <script>
+    const reviews = [
+      {
+        stars: 5,
+        text: "Très bien situé sur la corniche, parfait pour observer les passants en sirotant un bon café.",
+        name: "Mariem El Bay"
+      },
+      {
+        stars: 4,
+        text: "Ambiance calme et chaleureuse. C’est devenu mon endroit préféré pour lire ou travailler.",
+        name: "Sofien G."
+      },
+      {
+        stars: 5,
+        text: "Le café glacé est top et leurs pâtisseries sont vraiment délicieuses.",
+        name: "Nour H."
+      },
+      {
+        stars: 4,
+        text: "J’ai adoré le décor cosy et la musique douce. Un vrai coup de cœur.",
+        name: "Yasmine B."
+      }
+    ];
+
+    const track = document.getElementById('carousel-track');
+    let currentIndex = 0;
+    let autoScrollInterval;
+
+    function createCards() {
+      reviews.forEach((review, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        if (i === 0) card.classList.add('active');
+        card.innerHTML = `
+          <div class="stars">${'★'.repeat(review.stars)}${'☆'.repeat(5 - review.stars)}</div>
+          <p>${review.text}</p>
+          <div class="reviewer-name">– ${review.name}</div>
+        `;
+        track.appendChild(card);
+      });
+    }
+
+    function updateCards() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.classList.remove('active');
+        const offset = index - currentIndex;
+        card.style.transform = `translateX(${offset * 320}px) scale(${index === currentIndex ? 1 : 0.8})`;
+        card.style.opacity = index === currentIndex ? '1' : '0.3';
+        if (index === currentIndex) card.classList.add('active');
+      });
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % reviews.length;
+      updateCards();
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+      updateCards();
+    }
+
+    function startAutoScroll() {
+      autoScrollInterval = setInterval(() => {
+        showNext();
+      }, 5000);
+    }
+
+    function resetAutoScroll() {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      showPrev();
+      resetAutoScroll();
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      showNext();
+      resetAutoScroll();
+    });
+
+    createCards();
+    updateCards();
+    startAutoScroll();
+  </script>
+
+
 
 </body>
 </html>
