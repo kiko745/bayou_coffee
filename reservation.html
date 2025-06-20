@@ -8,7 +8,7 @@
 
   <style>
     body {
-      background-color: #d89873; /* luxury black */
+      background-color: #1c1b1a;
       font-family: 'Segoe UI', sans-serif;
       overflow-x: hidden;
     }
@@ -35,7 +35,7 @@
 
     .form-label {
       font-weight: 600;
-      color: #f5f5f4;
+      color: #fdf7e4;
     }
 
     .confirmation {
@@ -66,7 +66,7 @@
     }
 
     .checkmark svg {
-      stroke: #a70909;
+      stroke: #4b1e1e;
       stroke-width: 3;
       fill: none;
       stroke-linecap: round;
@@ -84,18 +84,18 @@
   </style>
 </head>
 
-<body class="min-h-screen flex items-center justify-center px-4" style="background-color: #60a057;"> <!-- Dark almost black -->
+<body class="min-h-screen flex items-center justify-center px-4">
 
-  <div id="form-card" class="fade-in rounded-xl shadow-2xl p-8 max-w-lg w-full" 
-       style="background-color: #2a4d32; color: #f5f0e6; border: 2px solid #d4af37;">
+  <div id="form-card" class="fade-in rounded-xl shadow-2xl p-8 max-w-lg w-full"
+       style="background-color: #2e2b28; color: #fdf7e4; border: 2px solid #d4af37;">
     <h1 class="text-3xl font-bold mb-4 text-center">Reserve a Table</h1>
-    <p class="text-center mb-6 text-sm text-[#dad5ca]">Let us know when you'll be joining us, and we’ll save your favorite spot!</p>
+    <p class="text-center mb-6 text-sm text-[#e7e3d8]">Let us know when you'll be joining us, and we’ll save your favorite spot!</p>
 
     <form id="reservation-form" class="space-y-5">
       <div>
-        <label for="guests" class="form-label block mb-1" style="color:#f5f0e6;">Number of Guests</label>
-        <select id="guests" name="guests" class="w-full rounded-lg px-4 py-2" 
-                style="background-color:#40603f; color:#f5f0e6;" required>
+        <label for="guests" class="form-label block mb-1">Number of Guests</label>
+        <select id="guests" name="guests" class="w-full rounded-lg px-4 py-2"
+                style="background-color:#3a3632; color:#fdf7e4;" required>
           <option value="">Select guests</option>
           <option>1</option>
           <option>2</option>
@@ -106,15 +106,15 @@
       </div>
 
       <div>
-        <label for="date" class="form-label block mb-1" style="color:#f5f0e6;">Date</label>
-        <input type="date" id="date" name="date" class="w-full rounded-lg px-4 py-2" 
-               style="background-color:#40603f; color:#f5f0e6;" required />
+        <label for="date" class="form-label block mb-1">Date</label>
+        <input type="date" id="date" name="date" class="w-full rounded-lg px-4 py-2"
+               style="background-color:#3a3632; color:#fdf7e4;" required />
       </div>
 
       <div>
-        <label for="time" class="form-label block mb-1" style="color:#f5f0e6;">Time</label>
-        <select id="time" name="time" class="w-full rounded-lg px-4 py-2" 
-                style="background-color:#40603f; color:#f5f0e6;" required>
+        <label for="time" class="form-label block mb-1">Time</label>
+        <select id="time" name="time" class="w-full rounded-lg px-4 py-2"
+                style="background-color:#3a3632; color:#fdf7e4;" required>
           <option value="">Select time</option>
           <option>10:00 AM</option>
           <option>12:00 PM</option>
@@ -126,33 +126,32 @@
       </div>
 
       <div>
-        <label for="email" class="form-label block mb-1" style="color:#f5f0e6;">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full rounded-lg px-4 py-2" 
-               style="background-color:#40603f; color:#f5f0e6;" required />
+        <label for="email" class="form-label block mb-1">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full rounded-lg px-4 py-2"
+               style="background-color:#3a3632; color:#fdf7e4;" required />
       </div>
 
       <div>
-        <label for="phone" class="form-label block mb-1" style="color:#f5f0e6;">Phone</label>
-        <input type="tel" id="phone" name="phone" placeholder="+216 99 999 999" class="w-full rounded-lg px-4 py-2" 
-               style="background-color:#40603f; color:#f5f0e6;" required />
+        <label for="phone" class="form-label block mb-1">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="+216 99 999 999" class="w-full rounded-lg px-4 py-2"
+               style="background-color:#3a3632; color:#fdf7e4;" required />
       </div>
 
-      <button type="submit" class="w-full mt-4 py-2 font-semibold rounded-lg transition duration-300" 
-              style="background-color:#d4af37; color:#1b1b1b;"
+      <button type="submit" class="w-full mt-4 py-2 font-semibold rounded-lg transition duration-300"
+              style="background-color:#d4af37; color:#1c1b1a;"
               onmouseover="this.style.backgroundColor='#e6c95c'" onmouseout="this.style.backgroundColor='#d4af37'">
         Reserve Now
       </button>
     </form>
 
     <div class="text-center mt-6">
-      <a href="index.html" class="text-sm underline hover:text-[#d4af37]" style="color:#f5f0e6;">← Back to Home</a>
+      <a href="index.html" class="text-sm underline hover:text-[#d4af37]" style="color:#fdf7e4;">← Back to Home</a>
     </div>
   </div>
 
-
-
   <!-- Confirmation Message -->
-  <div id="confirmation-card" class="hidden bg-[#1a1a1a] text-[#f5f5f4] rounded-xl shadow-2xl p-8 max-w-md w-full confirmation text-center border border-[#d4af37]">
+  <div id="confirmation-card" class="hidden rounded-xl shadow-2xl p-8 max-w-md w-full confirmation text-center"
+       style="background-color:#4b1e1e; color:#fdf7e4; border: 2px solid #d4af37;">
     <div class="checkmark">
       <svg width="32" height="32" viewBox="0 0 24 24">
         <polyline points="20 6 9 17 4 12" />
