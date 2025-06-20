@@ -11,14 +11,15 @@
       background-color: #ffffff;
       color: #3e2723;
     }
+
     body {
       background-color: #f4e5d3;
       color: #252222;
-      transition: background-color 0.5s, color 0.5s;
       font-style: italic;
+      transition: background-color 0.5s, color 0.5s;
     }
 
-    /* Loading screen */
+    /* Loading Screen */
     #loading-screen {
       position: fixed;
       z-index: 1000;
@@ -37,7 +38,7 @@
       font-style: normal;
     }
     #coffee-cup {
-      font-size: 6rem;
+      font-size: 5rem;
       animation: bounce 1.2s ease-in-out infinite;
       margin-bottom: 1rem;
     }
@@ -47,12 +48,11 @@
     }
     #loading-text {
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 0.5rem;
-      min-height: 2rem;
     }
     #welcome-text {
-      font-size: 1.15rem;
+      font-size: 1rem;
       font-weight: 600;
       margin-bottom: 2rem;
       max-width: 400px;
@@ -75,6 +75,7 @@
       transition: width 0.3s ease;
     }
 
+    /* Carousel cards */
     .carousel {
       perspective: 1200px;
       width: 350px;
@@ -100,8 +101,6 @@
       text-align: center;
       font-size: 0.9rem;
       line-height: 1.4;
-      cursor: default;
-      user-select: none;
       opacity: 0.3;
       transform: scale(0.8);
       transition: all 0.4s ease;
@@ -111,6 +110,7 @@
       transform: scale(1) translateZ(0);
       z-index: 10;
     }
+
     .stars {
       color: #ffd700;
       margin-bottom: 0.5rem;
@@ -122,43 +122,25 @@
       font-style: normal;
       font-size: 1.1rem;
     }
-    .role {
-      color: #3bc7b8;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-      cursor: default;
-    }
-    .location {
-      font-size: 0.75rem;
-      font-style: italic;
-      opacity: 0.8;
-      cursor: default;
-    }
 
-    /* Responsive text size for small screens */
+    /* Responsive Fixes */
     @media (max-width: 640px) {
-      /* Reduce heading size in hero */
       #home h2 {
-        font-size: 2.5rem; /* smaller than 5xl on desktop */
+        font-size: 2rem;
+        line-height: 2.6rem;
       }
-
       #home p {
-        font-size: 1rem; /* smaller paragraph text */
+        font-size: 1rem;
       }
-
-      /* Also reduce padding inside the hero's text container */
       #home > div {
-        padding: 1.5rem;
+        padding: 1rem;
+        margin: 0 1rem;
       }
 
-      /* Optional: reduce button size */
-      #home a {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        font-size: 0.9rem;
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
       }
     }
   </style>
@@ -180,38 +162,38 @@
   </div>
 
   <!-- Header -->
-  <header class="fixed w-full z-50 px-6 py-4 flex items-center justify-between shadow">
+  <header class="fixed w-full z-50 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between shadow bg-white">
     <div class="flex items-center space-x-3">
       <img src="logo.jpg" alt="Bayou's Logo" class="h-10 w-auto" />
       <h1 class="text-xl font-bold">Bayou's Coffee</h1>
     </div>
-    <nav class="flex space-x-6 text-[#3e2723]">
+    <nav class="flex flex-wrap gap-4 mt-2 sm:mt-0 sm:space-x-6 text-[#3e2723]">
       <a href="#home" class="hover:text-yellow-300">Home</a>
-      <a href="#reservation" class="hover:text-yellow-300">Reservation</a>
       <a href="#menu" class="hover:text-yellow-300">Menu</a>
       <a href="#review" class="hover:text-yellow-300">Review</a>
+      <a href="#reservation" class="hover:text-yellow-300">Reservation</a>
     </nav>
   </header>
 
   <!-- Hero Section -->
   <section id="home" class="h-screen flex items-center justify-center bg-cover bg-center pt-24" style="background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
-    <div class="text-center bg-[#3e2723]/70 text-[#fddbb0] p-10 rounded-lg max-w-xl">
+    <div class="text-center bg-[#3e2723]/70 text-[#fddbb0] p-10 rounded-lg max-w-xl w-full">
       <h2 class="text-5xl font-extrabold mb-4">Welcome to Bayou's Coffee</h2>
       <p class="text-lg mb-6">Where every sip feels like home.</p>
       <a href="#about" class="bg-yellow-300 text-[#3e2723] px-6 py-2 rounded hover:bg-yellow-400 font-semibold">Explore</a>
     </div>
   </section>
 
-  <!-- Reservation Section -->
-  <section id="reservation" class="py-20 px-6">
-    <h2 class="text-3xl font-bold mb-4 text-center">Reservation</h2>
-    <!-- Reservation form content here -->
-  </section>
-
   <!-- Menu Section -->
   <section id="menu" class="py-20 px-6 bg-[#efebe9]">
     <h2 class="text-3xl font-bold mb-4 text-center">Our Menu</h2>
-    <!-- Menu items here -->
+    <!-- Menu items placeholder -->
+  </section>
+
+  <!-- Reservation Section -->
+  <section id="reservation" class="py-20 px-6">
+    <h2 class="text-3xl font-bold mb-4 text-center">Reservation</h2>
+    <!-- Reservation form placeholder -->
   </section>
 
   <!-- Review Section -->
@@ -219,21 +201,13 @@
     <h2 class="text-3xl font-bold mb-10 text-center text-[#0a4f43]">Customer Feedback</h2>
 
     <div class="relative flex justify-center items-center">
-      <!-- Left Arrow -->
-      <button id="prevBtn" class="absolute left-0 text-3xl text-[#0a4f43] hover:scale-125 transition-transform px-4 z-10">
-        &laquo;
-      </button>
+      <button id="prevBtn" class="absolute left-0 text-3xl text-[#0a4f43] hover:scale-125 transition-transform px-4 z-10">&laquo;</button>
 
       <div class="carousel" id="carousel">
-        <div class="carousel-track" id="carousel-track">
-          <!-- Cards inserted by JS -->
-        </div>
+        <div class="carousel-track" id="carousel-track"></div>
       </div>
 
-      <!-- Right Arrow -->
-      <button id="nextBtn" class="absolute right-0 text-3xl text-[#0a4f43] hover:scale-125 transition-transform px-4 z-10">
-        &raquo;
-      </button>
+      <button id="nextBtn" class="absolute right-0 text-3xl text-[#0a4f43] hover:scale-125 transition-transform px-4 z-10">&raquo;</button>
     </div>
   </section>
 
@@ -242,7 +216,7 @@
     &copy; 2025 Bayou's Coffee. All rights reserved.
   </footer>
 
-  <!-- Scripts -->
+  <!-- JavaScript -->
   <script>
     const loadingMessages = [
       "Grinding beans...",
@@ -250,7 +224,6 @@
       "Brewing your perfect cup... ☕🐇",
       "Almost there..."
     ];
-
     let load = 0;
     const loadingText = document.getElementById('loading-text');
     const progressBar = document.getElementById('progress-bar');
@@ -280,26 +253,10 @@
 
   <script>
     const reviews = [
-      {
-        stars: 5,
-        text: "Très bien situé sur la corniche, parfait pour observer les passants en sirotant un bon café.",
-        name: "Mariem El Bay"
-      },
-      {
-        stars: 4,
-        text: "Ambiance calme et chaleureuse. C’est devenu mon endroit préféré pour lire ou travailler.",
-        name: "Sofien G."
-      },
-      {
-        stars: 5,
-        text: "Le café glacé est top et leurs pâtisseries sont vraiment délicieuses.",
-        name: "Nour H."
-      },
-      {
-        stars: 4,
-        text: "J’ai adoré le décor cosy et la musique douce. Un vrai coup de cœur.",
-        name: "Yasmine B."
-      }
+      { stars: 5, text: "Très bien situé sur la corniche, parfait pour observer les passants en sirotant un bon café.", name: "Mariem El Bay" },
+      { stars: 4, text: "Ambiance calme et chaleureuse. C’est devenu mon endroit préféré pour lire ou travailler.", name: "Sofien G." },
+      { stars: 5, text: "Le café glacé est top et leurs pâtisseries sont vraiment délicieuses.", name: "Nour H." },
+      { stars: 4, text: "J’ai adoré le décor cosy et la musique douce. Un vrai coup de cœur.", name: "Yasmine B." }
     ];
 
     const track = document.getElementById('carousel-track');
@@ -342,9 +299,7 @@
     }
 
     function startAutoScroll() {
-      autoScrollInterval = setInterval(() => {
-        showNext();
-      }, 5000);
+      autoScrollInterval = setInterval(showNext, 5000);
     }
 
     function resetAutoScroll() {
@@ -366,6 +321,5 @@
     updateCards();
     startAutoScroll();
   </script>
-
 </body>
 </html>
