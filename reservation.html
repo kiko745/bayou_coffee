@@ -147,8 +147,64 @@
     const form = document.getElementById("reservation-form");
     const formCard = document.getElementById("form-card");
     const confirmationCard = document.getElementById("confirmation-card");
+    const dateInput = document.getElementById("date");
+
+    // Set min and max dates for the date input on page load
+    window.addEventListener("DOMContentLoaded", () => {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, "0");
+      const dd = String(today.getDate()).padStart(2, "0");
+
+      const minDate = `${yyyy}-${mm}-${dd}`;
+
+      // Calculate max date (1 month from today)
+      const maxDateObj = new Date(today);
+      maxDateObj.setMonth(maxDateObj.getMonth() + 1);
+
+      // Handle cases where adding 1 month skips month (e.g., Jan 31 + 1 month → Feb 28)
+      if (maxDateObj.getDate() !== today.getDate()) {
+        maxDateObj.setDate(0); // Go to last day of previous month
+      }
+
+      const maxYyyy = maxDateObj.getFullYear();
+      const maxMm = String(maxDateObj.getMonth() + 1).padStart(2, "0");
+      const maxDd = String(maxDateObj.getDate()).padStart(2, "0");
+
+      const maxDate = `${maxYyyy}-${maxMm}-${maxDd}`;
+
+      dateInput.setAttribute("min", minDate);
+      dateInput.setAttribute("max", maxDate);
+    });
 
     form.addEventListener("submit", function (e) {
+      const selectedDate = new Date(dateInput.value);
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+      // Check if date is valid
+      if (isNaN(selectedDate.getTime())) {
+        alert("Please select a valid date.");
+        e.preventDefault();
+        return;
+      }
+
+      if (selectedDate < today) {
+        alert("Please select today or a future date.");
+        e.preventDefault();
+        return;
+      }
+
+      const maxAllowedDate = new Date(today);
+      maxAllowedDate.setMonth(maxAllowedDate.getMonth() + 1);
+
+      if (selectedDate > maxAllowedDate) {
+        alert("Please select a date within one month from today.");
+        e.preventDefault();
+        return;
+      }
+
+      // If all checks pass, proceed with confirmation animation
       e.preventDefault();
       formCard.classList.add("opacity-0", "transition", "duration-700");
 
