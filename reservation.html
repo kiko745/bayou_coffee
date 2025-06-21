@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reservation | Bayou's Coffee</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-
   <style>
     body {
-      background-color: #1c1b1a;
+      background: linear-gradient(135deg, #657aee, #3a3a3a);
       font-family: 'Segoe UI', sans-serif;
       overflow-x: hidden;
+      margin: 0;
     }
 
     .fade-in {
@@ -30,12 +30,12 @@
 
     input:focus, select:focus {
       outline: none;
-      box-shadow: 0 0 0 3px #d4af37;
+      box-shadow: 0 0 0 3px #daa520;
     }
 
     .form-label {
       font-weight: 600;
-      color: #fdf7e4;
+      color: #f4ede5;
     }
 
     .confirmation {
@@ -57,7 +57,7 @@
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      background: #d4af37;
+      background: #0a0a0a;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -66,7 +66,7 @@
     }
 
     .checkmark svg {
-      stroke: #4b1e1e;
+      stroke: #ffffff;
       stroke-width: 3;
       fill: none;
       stroke-linecap: round;
@@ -83,38 +83,25 @@
     }
   </style>
 </head>
-
 <body class="min-h-screen flex items-center justify-center px-4">
-
-  <div id="form-card" class="fade-in rounded-xl shadow-2xl p-8 max-w-lg w-full"
-       style="background-color: #2e2b28; color: #fdf7e4; border: 2px solid #d4af37;">
-    <h1 class="text-3xl font-bold mb-4 text-center">Reserve a Table</h1>
-    <p class="text-center mb-6 text-sm text-[#e7e3d8]">Let us know when you'll be joining us, and we’ll save your favorite spot!</p>
+  <div id="form-card" class="fade-in rounded-3xl shadow-2xl p-10 max-w-lg w-full bg-[#1c1c1c] border-4 border-[#daa520] animate-fade-in text-[#f4ede5]">
+    <h1 class="text-4xl font-extrabold mb-4 text-center text-[#daa520]">Reserve a Table</h1>
+    <p class="text-center mb-6 text-sm text-[#d9d1c5]">Let us know when you'll be joining us, and we’ll save your favorite spot!</p>
 
     <form id="reservation-form" class="space-y-5">
       <div>
-        <label for="guests" class="form-label block mb-1">Number of Guests</label>
-        <select id="guests" name="guests" class="w-full rounded-lg px-4 py-2"
-                style="background-color:#3a3632; color:#fdf7e4;" required>
-          <option value="">Select guests</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5+</option>
-        </select>
+        <label for="name" class="form-label block mb-1">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" class="w-full rounded-xl px-4 py-3 bg-[#2a2a2a] text-[#f4ede5]" required />
       </div>
 
       <div>
         <label for="date" class="form-label block mb-1">Date</label>
-        <input type="date" id="date" name="date" class="w-full rounded-lg px-4 py-2"
-               style="background-color:#3a3632; color:#fdf7e4;" required />
+        <input type="date" id="date" name="date" class="w-full rounded-xl px-4 py-3 bg-[#2a2a2a] text-[#f4ede5]" required />
       </div>
 
       <div>
         <label for="time" class="form-label block mb-1">Time</label>
-        <select id="time" name="time" class="w-full rounded-lg px-4 py-2"
-                style="background-color:#3a3632; color:#fdf7e4;" required>
+        <select id="time" name="time" class="w-full rounded-xl px-4 py-3 bg-[#2a2a2a] text-[#f4ede5]" required>
           <option value="">Select time</option>
           <option>10:00 AM</option>
           <option>12:00 PM</option>
@@ -127,31 +114,25 @@
 
       <div>
         <label for="email" class="form-label block mb-1">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full rounded-lg px-4 py-2"
-               style="background-color:#3a3632; color:#fdf7e4;" required />
+        <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full rounded-xl px-4 py-3 bg-[#2a2a2a] text-[#f4ede5]" required />
       </div>
 
       <div>
         <label for="phone" class="form-label block mb-1">Phone</label>
-        <input type="tel" id="phone" name="phone" placeholder="+216 99 999 999" class="w-full rounded-lg px-4 py-2"
-               style="background-color:#3a3632; color:#fdf7e4;" required />
+        <input type="tel" id="phone" name="phone" placeholder="+216 99 999 999" class="w-full rounded-xl px-4 py-3 bg-[#2a2a2a] text-[#f4ede5]" required />
       </div>
 
-      <button type="submit" class="w-full mt-4 py-2 font-semibold rounded-lg transition duration-300"
-              style="background-color:#d4af37; color:#1c1b1a;"
-              onmouseover="this.style.backgroundColor='#e6c95c'" onmouseout="this.style.backgroundColor='#d4af37'">
+      <button type="submit" class="w-full mt-4 py-3 font-semibold rounded-xl transition duration-300 text-[#1c1c1c] bg-[#daa520] hover:bg-[#caa310]">
         Reserve Now
       </button>
     </form>
 
     <div class="text-center mt-6">
-      <a href="index.html" class="text-sm underline hover:text-[#d4af37]" style="color:#fdf7e4;">← Back to Home</a>
+      <a href="index.html" class="text-sm underline hover:text-[#daa520] text-[#f4ede5]">← Back to Home</a>
     </div>
   </div>
 
-  <!-- Confirmation Message -->
-  <div id="confirmation-card" class="hidden rounded-xl shadow-2xl p-8 max-w-md w-full confirmation text-center"
-       style="background-color:#4b1e1e; color:#fdf7e4; border: 2px solid #d4af37;">
+  <div id="confirmation-card" class="hidden rounded-3xl shadow-2xl p-10 max-w-md w-full confirmation text-center bg-[#f4ede5] text-[#1c1c1c] border-4 border-[#9b8c5a]">
     <div class="checkmark">
       <svg width="32" height="32" viewBox="0 0 24 24">
         <polyline points="20 6 9 17 4 12" />
@@ -159,7 +140,7 @@
     </div>
     <h2 class="text-2xl font-bold mb-2">Reservation Confirmed!</h2>
     <p class="text-sm">Thank you for booking with Bayou’s Coffee. We look forward to serving you!</p>
-    <a href="index.html" class="inline-block mt-6 text-sm underline hover:text-[#d4af37]">← Back to Home</a>
+    <a href="index.html" class="inline-block mt-6 text-sm underline hover:text-[#daa520]">← Back to Home</a>
   </div>
 
   <script>
@@ -177,6 +158,5 @@
       }, 700);
     });
   </script>
-
 </body>
 </html>
