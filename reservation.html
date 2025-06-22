@@ -101,15 +101,8 @@
 
       <div>
         <label for="time" class="form-label block mb-1">Time</label>
-        <select id="time" name="time" class="w-full rounded-xl px-4 py-3 bg-[#2a2a2a] text-[#f4ede5]" required>
-          <option value="">Select time</option>
-          <option>10:00 AM</option>
-          <option>12:00 PM</option>
-          <option>2:00 PM</option>
-          <option>4:00 PM</option>
-          <option>6:00 PM</option>
-          <option>8:00 PM</option>
-        </select>
+        <input type="time" id="time" name="time" class="w-full rounded-xl px-4 py-3 bg-[#2a2a2a] text-[#f4ede5]" required />
+        <p class="text-xs mt-1 text-[#c1b9aa]">Available between 07:00 and 02:00 (summer) or 23:00 (winter)</p>
       </div>
 
       <div>
@@ -148,6 +141,7 @@
     const formCard = document.getElementById("form-card");
     const confirmationCard = document.getElementById("confirmation-card");
     const dateInput = document.getElementById("date");
+    const timeInput = document.getElementById("time");
 
     // Set min and max dates for the date input on page load
     window.addEventListener("DOMContentLoaded", () => {
@@ -158,31 +152,42 @@
 
       const minDate = `${yyyy}-${mm}-${dd}`;
 
-      // Calculate max date (1 month from today)
       const maxDateObj = new Date(today);
       maxDateObj.setMonth(maxDateObj.getMonth() + 1);
-
-      // Handle cases where adding 1 month skips month (e.g., Jan 31 + 1 month → Feb 28)
       if (maxDateObj.getDate() !== today.getDate()) {
-        maxDateObj.setDate(0); // Go to last day of previous month
+        maxDateObj.setDate(0);
       }
 
       const maxYyyy = maxDateObj.getFullYear();
       const maxMm = String(maxDateObj.getMonth() + 1).padStart(2, "0");
       const maxDd = String(maxDateObj.getDate()).padStart(2, "0");
-
       const maxDate = `${maxYyyy}-${maxMm}-${maxDd}`;
 
       dateInput.setAttribute("min", minDate);
       dateInput.setAttribute("max", maxDate);
     });
 
+    // Set min/max time based on selected date's month
+    dateInput.addEventListener("change", () => {
+      const selectedDate = new Date(dateInput.value);
+      const month = selectedDate.getMonth() + 1;
+      const isSummer = month >= 4 && month <= 9;
+
+      timeInput.min = "07:00";
+      timeInput.max = isSummer ? "02:00" : "23:00";
+
+      // Reset time if outside valid range
+      if (timeInput.value && (timeInput.value < timeInput.min || timeInput.value > timeInput.max)) {
+        timeInput.value = "";
+      }
+    });
+
+    // Handle form submit
     form.addEventListener("submit", function (e) {
       const selectedDate = new Date(dateInput.value);
       const today = new Date();
-      today.setHours(0,0,0,0);
+      today.setHours(0, 0, 0, 0);
 
-      // Check if date is valid
       if (isNaN(selectedDate.getTime())) {
         alert("Please select a valid date.");
         e.preventDefault();
@@ -204,10 +209,8 @@
         return;
       }
 
-      // If all checks pass, proceed with confirmation animation
       e.preventDefault();
       formCard.classList.add("opacity-0", "transition", "duration-700");
-
       setTimeout(() => {
         formCard.style.display = "none";
         confirmationCard.classList.remove("hidden");
