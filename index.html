@@ -656,8 +656,9 @@
   });
 </script>
 
-  <!-- JavaScript -->
-  <script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // === Loading Screen ===
     const loadingMessages = [
       "Grinding beans...",
       "Heating water...",
@@ -665,10 +666,10 @@
       "Almost there..."
     ];
     let load = 0;
+    let msgIndex = 0;
     const loadingText = document.getElementById('loading-text');
     const progressBar = document.getElementById('progress-bar');
     const loadingScreen = document.getElementById('loading-screen');
-    let msgIndex = 0;
 
     setInterval(() => {
       msgIndex = (msgIndex + 1) % loadingMessages.length;
@@ -678,7 +679,6 @@
     const interval = setInterval(() => {
       load++;
       progressBar.style.width = load + '%';
-
       if (load >= 100) {
         clearInterval(interval);
         loadingScreen.style.transition = 'opacity 1.3s ease';
@@ -689,16 +689,13 @@
         }, 1200);
       }
     }, 10);
-  </script>
 
- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // === Review Carousel Logic ===
+    // === Review Carousel ===
     const reviews = [
-      { stars: 5, text: "Très bien situé sur la corniche, parfait pour observer les passants en sirotant un bon café.", name: "Mariem El Bay" },
-      { stars: 4, text: "Ambiance calme et chaleureuse. C’est devenu mon endroit préféré pour lire ou travailler.", name: "Sofien G." },
-      { stars: 5, text: "Le café glacé est top et leurs pâtisseries sont vraiment délicieuses.", name: "Nour H." },
-      { stars: 4, text: "J’ai adoré le décor cosy et la musique douce. Un vrai coup de cœur.", name: "Yasmine B." }
+      { stars: 5, text: "Très bien situé sur la corniche...", name: "Mariem El Bay" },
+      { stars: 4, text: "Ambiance calme et chaleureuse...", name: "Sofien G." },
+      { stars: 5, text: "Le café glacé est top...", name: "Nour H." },
+      { stars: 4, text: "J’ai adoré le décor cosy...", name: "Yasmine B." }
     ];
 
     const track = document.getElementById('carousel-track');
@@ -752,13 +749,11 @@
 
       const prevBtn = document.getElementById('prevBtn');
       const nextBtn = document.getElementById('nextBtn');
-
       if (prevBtn && nextBtn) {
         prevBtn.addEventListener('click', () => {
           showPrev();
           resetAutoScroll();
         });
-
         nextBtn.addEventListener('click', () => {
           showNext();
           resetAutoScroll();
@@ -770,67 +765,46 @@
       startAutoScroll();
     }
 
-    // === Menu Loader Logic ===
+    // === Menu Scroll Fix ===
     const menuLink = document.querySelector('a[href="#menu"]');
     if (menuLink) {
       menuLink.addEventListener('click', function (e) {
-        e.preventDefault(); // stop default jump
-        const container = document.getElementById('menu-container');
-        if (!container) return;
-
-        container.innerHTML = 'Loading menu...';
-        fetch('menu.html')
-          .then(res => {
-            if (!res.ok) throw new Error('Failed to fetch menu.');
-            return res.text();
-          })
-          .then(html => {
-            container.innerHTML = html;
-            document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
-          })
-          .catch(err => {
-            container.innerHTML = "<p class='text-red-500'>Failed to load menu.</p>";
-            console.error(err);
-          });
+        e.preventDefault();
+        const menuSection = document.getElementById('menu');
+        if (menuSection) {
+          menuSection.scrollIntoView({ behavior: 'smooth' });
+        }
       });
     }
-  });
-</script>
-<script>
-  // Load language from localStorage or default to English
-  let currentLang = localStorage.getItem('lang') || 'en';
 
-  const langToggle = document.getElementById('langToggle');
-  const langLabel = document.getElementById('langLabel');
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
+    // === Language Toggle + Hamburger ===
+    let currentLang = localStorage.getItem('lang') || 'en';
+    const langToggle = document.getElementById('langToggle');
+    const langLabel = document.getElementById('langLabel');
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-  // Update the language label on the button and toggle text visibility
-  function updateLangDisplay() {
-    langLabel.textContent = currentLang === 'en' ? 'FR' : 'EN';
+    function updateLangDisplay() {
+      langLabel.textContent = currentLang === 'en' ? 'FR' : 'EN';
+      document.querySelectorAll('.lang-en').forEach(el => el.classList.toggle('hidden', currentLang !== 'en'));
+      document.querySelectorAll('.lang-fr').forEach(el => el.classList.toggle('hidden', currentLang !== 'fr'));
+    }
 
-    document.querySelectorAll('.lang-en').forEach(el => {
-      el.classList.toggle('hidden', currentLang !== 'en');
-    });
-    document.querySelectorAll('.lang-fr').forEach(el => {
-      el.classList.toggle('hidden', currentLang !== 'fr');
-    });
-  }
+    if (langToggle) {
+      langToggle.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'fr' : 'en';
+        localStorage.setItem('lang', currentLang);
+        updateLangDisplay();
+      });
+    }
 
-  // Toggle language on button click
-  langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'en' ? 'fr' : 'en';
-    localStorage.setItem('lang', currentLang);
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
     updateLangDisplay();
   });
-
-  // Mobile menu toggle
-  menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-
-  // Initialize on page load
-  updateLangDisplay();
 </script>
 
-</html>
