@@ -238,20 +238,42 @@
   </div>
 
   <!-- Header -->
-  <header class="fixed w-full z-50 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between shadow bg-white">
+<header class="fixed top-0 left-0 w-full z-50 bg-white shadow px-6 py-4">
+  <div class="flex items-center justify-between">
+    <!-- Logo + Name -->
     <div class="flex items-center space-x-3">
       <img src="logo.jpg" alt="Bayou's Logo" class="h-10 w-auto" />
-      <h1 class="text-xl font-bold">Bayou's Coffee</h1>
+      <h1 class="text-xl font-bold text-[#3e2723]">Bayou's Coffee</h1>
     </div>
-    <nav class="flex flex-wrap gap-4 mt-2 sm:mt-0 sm:space-x-6 text-[#3e2723]">
-      <a href="#home" class="hover:text-yellow-300">Home</a>
-      <a href="reservation.html" class="hover:text-yellow-300">reservation</a>
-      <a href="#review" class="hover:text-yellow-300">Review</a>
-      <a href="#menu" id="menu-link" class="hover:text-yellow-300">Menu</a>
 
+    <!-- Language & Hamburger -->
+    <div class="flex items-center gap-4">
+      <!-- Language Toggle Button -->
+      <button id="langToggle" class="flex items-center text-[#3e2723] hover:text-yellow-300 font-medium text-sm">
+        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M2 12h20M12 2a10 10 0 0110 10M12 22A10 10 0 012 12" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+        <span id="langLabel">EN</span>
+      </button>
 
-    </nav>
-  </header>
+      <!-- Hamburger Menu Button (visible on mobile) -->
+      <button id="menuToggle" class="text-[#3e2723] sm:hidden" aria-label="Toggle menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav id="mobileMenu" class="hidden flex-col mt-4 space-y-3 sm:flex sm:flex-row sm:space-y-0 sm:space-x-6 text-[#3e2723] text-base">
+    <a href="#home" class="hover:text-yellow-300">Home</a>
+    <a href="reservation.html" class="hover:text-yellow-300">Reservation</a>
+    <a href="#review" class="hover:text-yellow-300">Review</a>
+    <a href="#menu" class="hover:text-yellow-300">Menu</a>
+  </nav>
+</header>
 
   <!-- Hero Section -->
   <section id="home" class="h-screen flex items-center justify-center bg-cover bg-center pt-24" style="background-image: url('https://scontent.ftun1-2.fna.fbcdn.net/v/t39.30808-6/486694872_1210460604417808_1241476810505050704_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=yts-xC_Ruy4Q7kNvwGpwv5I&_nc_oc=AdmhTD5j1_03wnifdKWq3kz_mWLWIZkVRwecHTcQqu8Z50tj4JeqQdDn6XqXhqItd1I&_nc_zt=23&_nc_ht=scontent.ftun1-2.fna&_nc_gid=9rFNTRqgK8rCgv3m41kg3A&oh=00_AfOGrRE-gmJn7yeugyZ4c9chdncKScm93Ry3b41j6IfKhQ&oe=685C76C6');">
