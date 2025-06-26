@@ -14,70 +14,83 @@
       color: #5f4743;
     }
 
-    body {
-      background-color: #f4e5d3;
-      color: #080606;
-      font-style: italic;
-      transition: background-color 0.5s, color 0.5s;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
 
-    /* Loading Screen */
-    #loading-screen {
-      position: fixed;
-      z-index: 1000;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #ccae88;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #2c2214;
-      font-family: 'Segoe UI', sans-serif;
-      padding: 0 1rem;
-      text-align: center;
-      font-style: normal;
-    }
-    #coffee-cup {
-      font-size: 5rem;
-      animation: bounce 1.2s ease-in-out infinite;
-      margin-bottom: 1rem;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-40px); }
-    }
-    #loading-text {
-      font-weight: 700;
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
-    #welcome-text {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      max-width: 400px;
-      line-height: 1.4;
-    }
-    #progress-container {
-      width: 300px;
-      height: 15px;
-      background: #f4e5d3;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: inset 0 0 5px #a37d3c;
-      margin-bottom: 2rem;
-    }
-    #progress-bar {
-      height: 100%;
-      width: 0%;
-      background: #6d4c41;
-      border-radius: 10px 0 0 10px;
-      transition: width 0.3s ease;
-    }
+header {
+  background-color: #ffffff;
+  color: #5f4743;
+}
 
-/* Carousel Container and Arrows */
+body {
+  background-color: #f4e5d3;
+  color: #080706;
+  font-style: italic;
+  transition: background-color 0.5s, color 0.5s;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Loading Screen */
+#loading-screen {
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ccae88;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #2c2214;
+  padding: 0 1rem;
+  text-align: center;
+  font-style: normal;
+}
+
+#coffee-cup {
+  font-size: 5rem;
+  animation: bounce 1.2s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-40px); }
+}
+
+#loading-text {
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+#welcome-text {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  max-width: 400px;
+  line-height: 1.4;
+}
+
+#progress-container {
+  width: 300px;
+  height: 15px;
+  background: #f4e5d3;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px #a37d3c;
+  margin-bottom: 2rem;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #6d4c41;
+  border-radius: 10px 0 0 10px;
+  transition: width 0.3s ease;
+}
+
+/* Carousel */
 .carousel-container {
   width: 100%;
   max-width: 350px;
@@ -104,15 +117,9 @@
   transform: translateY(-50%) scale(1.2);
 }
 
-.arrow.left {
-  left: -10px;
-}
+.arrow.left { left: -10px; }
+.arrow.right { right: -10px; }
 
-.arrow.right {
-  right: -10px;
-}
-
-/* Carousel Inner */
 .carousel {
   perspective: 1200px;
   width: 350px;
@@ -168,59 +175,130 @@
   font-size: 1.1rem;
 }
 
+/* Coffee Style Headings */
+.text-coffee-heading {
+  color: #e9e9e9;
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
 
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+/* Responsive */
+@media (max-width: 640px) {
+  #home h2 { font-size: 2rem; line-height: 2.6rem; }
+  #home p { font-size: 1rem; }
+  #home > div { padding: 1rem; margin: 0 1rem; }
+  nav { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+}
 
-  .text-coffee-heading {
-    color: #e9e9e9;
-    font-size: 2.5rem;        /* Smaller than text-5xl */
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    letter-spacing: 0.5px;
-  }
+/* -------------------- REVIEW SECTION ADDED BELOW -------------------- */
 
+#reviews {
+  padding: 4rem 1.5rem;
+  background-color: #f4e5d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
 
-    /* Responsive Fixes */
-    @media (max-width: 640px) {
-      #home h2 {
-        font-size: 2rem;
-        line-height: 2.6rem;
-      }
-      #home p {
-        font-size: 1rem;
-      }
-      #home > div {
-        padding: 1rem;
-        margin: 0 1rem;
-      }
+#reviews::before {
+  content: "☕";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 3rem;
+  opacity: 0.15;
+  animation: steamFloat 3s ease-in-out infinite;
+}
 
-      nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-    }
-  </style>
-  <style>
-    header { background-color: #ffffff; color: #5f4743; }
-    body { background-color: #f4e5d3; color: #080606; font-style: italic; transition: background-color 0.5s, color 0.5s; }
-    #loading-screen { position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background-color: #ccae88; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #2c2214; font-family: 'Segoe UI', sans-serif; padding: 0 1rem; text-align: center; font-style: normal; }
-    #coffee-cup { font-size: 5rem; animation: bounce 1.2s ease-in-out infinite; margin-bottom: 1rem; }
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-40px); } }
-    #loading-text { font-weight: 700; font-size: 1.4rem; margin-bottom: 0.5rem; }
-    #welcome-text { font-size: 1rem; font-weight: 600; margin-bottom: 2rem; max-width: 400px; line-height: 1.4; }
-    #progress-container { width: 300px; height: 15px; background: #f4e5d3; border-radius: 10px; overflow: hidden; box-shadow: inset 0 0 5px #a37d3c; margin-bottom: 2rem; }
-    #progress-bar { height: 100%; width: 0%; background: #6d4c41; border-radius: 10px 0 0 10px; transition: width 0.3s ease; }
-    .text-coffee-heading { color: #e9e9e9; font-size: 2.5rem; font-family: 'Playfair Display', serif; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.5px; }
-    @media (max-width: 640px) {
-      #home h2 { font-size: 2rem; line-height: 2.6rem; }
-      #home p { font-size: 1rem; }
-      #home > div { padding: 1rem; margin: 0 1rem; }
-      nav { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
-    }
-  </style>
-  <!--revie-->
+@keyframes steamFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.review-container {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(143, 110, 68, 0.2);
+  border: 2px solid #ccae88;
+  font-style: italic;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.review-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #5f4743;
+  font-family: 'Playfair Display', serif;
+}
+
+.review-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.review-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #6d4c41;
+  font-style: normal;
+}
+
+.review-form input,
+.review-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #fdfaf7;
+  color: #3e2723;
+  border: 1px solid #ccae88;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  font-style: italic;
+}
+
+.review-form input:focus,
+.review-form textarea:focus {
+  outline: none;
+  border-color: #a37d3c;
+  box-shadow: 0 0 0 2px #a37d3c66;
+  background-color: #fffdf9;
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: #ccae88;
+  color: #3e2723;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-style: normal;
+}
+
+.submit-btn:hover {
+  background-color: #a37d3c;
+  transform: translateY(-2px);
+}
+
+</style>
 </head>
 
 <body class="font-sans italic">
@@ -807,4 +885,3 @@
     updateLangDisplay();
   });
 </script>
-
