@@ -327,56 +327,54 @@ body {
 
 <!-- Header -->
 <header class="fixed top-0 left-0 w-full z-50 bg-white shadow px-6 py-4">
-  <div class="flex items-center justify-between w-full">
-    
-    <!-- Left Side: Logo -->
+  <div class="flex items-center justify-between">
+    <!-- Logo + Name -->
     <div class="flex items-center space-x-3">
       <img src="logo.jpg" alt="Bayou's Logo" class="h-10 w-auto" />
       <h1 class="text-xl font-bold text-[#3e2723]">Bayou's Coffee</h1>
     </div>
 
-    <!-- Center: Desktop Navigation -->
-    <nav class="hidden sm:flex gap-16 text-[#3e2723] text-base font-semibold">
-      <a href="#home" class="hover:text-yellow-300">Home</a>
-      <a href="reservation.html" class="hover:text-yellow-300">Reservation</a>
-      <a href="#review" class="hover:text-yellow-300">Review</a>
-      <a href="#menu" class="hover:text-yellow-300">Menu</a>
-    </nav>
-
-    <!-- Right Side: Language Toggle & Mobile Menu -->
+    <!-- Language & Hamburger -->
     <div class="flex items-center gap-4">
-      <!-- Language Toggle -->
+      <!-- Language Toggle Button -->
       <button id="langToggle" class="flex items-center text-[#3e2723] hover:text-yellow-300 font-medium text-sm">
-        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M2 12h20M12 2a10 10 0 0110 10M12 22A10 10 0 012 12" />
+        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M2 12h20M12 2a10 10 0 0110 10M12 22A10 10 0 012 12" stroke="currentColor" stroke-width="2" fill="none"/>
         </svg>
         <span id="langLabel">EN</span>
       </button>
 
-      <!-- Hamburger (Mobile Only) -->
+      <!-- Hamburger Menu Button (visible on mobile) -->
       <button id="menuToggle" class="text-[#3e2723] sm:hidden" aria-label="Toggle menu">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
-
   </div>
 
-  <!-- Mobile Navigation -->
-  <nav id="mobileMenu" class="hidden sm:hidden flex-col mt-4 space-y-4 text-[#3e2723] text-base font-semibold items-center">
-    <a href="#home" class="hover:text-yellow-300">Home</a>
-    <a href="reservation.html" class="hover:text-yellow-300">Reservation</a>
-    <a href="#review" class="hover:text-yellow-300">Review</a>
-    <a href="#menu" class="hover:text-yellow-300">Menu</a>
-  </nav>
-</header>
-
+<nav
+  id="mobileMenu"
+  class="hidden flex-row mt-4 space-x-8 sm:flex sm:space-x-12 text-[#3e2723] text-base font-semibold justify-center"
+>
+  <a href="#home" class="hover:text-yellow-300">
+    Home
+  </a>
+  <a href="reservation.html" class="hover:text-yellow-300">
+    Reservation
+  </a>
+  <a href="#review" class="hover:text-yellow-300">
+    Review
+  </a>
+  <a href="#menu" class="hover:text-yellow-300">
+    Menu
+  </a>
+</nav>
 
 </header>
   <!-- Hero Section -->
-  <section id="home" class="h-screen flex items-center justify-center bg-cover bg-center pt-24" style="background-image: url('background.jpg');">
+  <section id="home" class="h-screen flex items-center justify-center bg-cover bg-center pt-24" style="background-image: url('backgroun.jpg');">
 
     <div class="text-center bg-[#3e2723]/70 text-[#fddbb0] p-10 rounded-lg max-w-xl w-full">
       <h2 class="text-5xl font-extrabold mb-4 text-coffee-heading">Welcome to Bayou's Coffee</h2>
